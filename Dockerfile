@@ -1,4 +1,3 @@
-# Docker Build Stage
 FROM openjdk:17
 
 COPY target/minikube-app-0.0.1-SNAPSHOT.jar app.jar
@@ -6,4 +5,10 @@ COPY target/minikube-app-0.0.1-SNAPSHOT.jar app.jar
 ENV PORT 9090
 EXPOSE $PORT
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+WORKDIR /app
+
+COPY . /app/
+
+RUN exec java -jar /app.jar
+
+ENTRYPOINT [ "java", "Main" ]
