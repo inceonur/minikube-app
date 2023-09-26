@@ -1,14 +1,6 @@
 FROM openjdk:17
-
+VOLUME /tmp
 COPY target/minikube-app-0.0.1-SNAPSHOT.jar app.jar
+ENV JAVA_OPTS=""
+ENTRYPOINT exec java -jar /app.jar --debug
 
-ENV PORT 9090
-EXPOSE $PORT
-
-WORKDIR /app
-
-COPY . /app/
-
-RUN exec java -jar /app.jar
-
-ENTRYPOINT [ "java", "Main" ]
