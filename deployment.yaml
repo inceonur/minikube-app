@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minikube-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: minikube-app
+  template:
+    metadata:
+      labels:
+        app: minikube-app
+    spec:
+      containers:
+        - name: spring-app
+          image: minikube-app:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9090
