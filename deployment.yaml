@@ -1,9 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: minikube-app
+  name: minikube-app-deployment
+  labels:
+    app: minikube-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: minikube-app
@@ -13,8 +15,22 @@ spec:
         app: minikube-app
     spec:
       containers:
-        - name: spring-app
+        - name: minikube-app-server
           image: inceonur/minikube-app:latest
-          imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 9090
+            - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minikube-app-service
+spec:
+  selector:
+    app: minikube-app
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 3000
+      nodePort: 31110
