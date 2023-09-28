@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spring-app
-          image: minikube-app:latest
+          image: inceonur/minikube-app:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9090
