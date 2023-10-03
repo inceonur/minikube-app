@@ -28,7 +28,7 @@ metadata:
 spec:
   selector:
     app: minikube-app
-  type: LoadBalancer
+  type: NodePort
   ports:
     - protocol: TCP
       port: 5000
