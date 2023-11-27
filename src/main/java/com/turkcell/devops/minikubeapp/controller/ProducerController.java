@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.Properties;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("api")
@@ -36,7 +34,9 @@ public class ProducerController {
     }
 
     @RequestMapping(value="/consume", method= RequestMethod.GET)
-    public String consumeFromBeginning() {
+    public List<String> consumeFromBeginning() {
+
+        List<String> messages = new ArrayList<>();
 
         String message = null;
 
@@ -46,12 +46,13 @@ public class ProducerController {
 
         ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(10));
 
+
         for (ConsumerRecord<String, String> record : records) {
 
-            message= record.value();
+            messages.add(record.value());
         }
 
-        return message;
+        return messages;
 
     }
     @Value("${spring.kafka.bootstrap-servers}")
