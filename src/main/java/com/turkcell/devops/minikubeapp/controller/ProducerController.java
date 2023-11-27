@@ -19,7 +19,7 @@ import java.util.*;
 public class ProducerController {
 
     private static KafkaConsumer<String, String> consumer;
-    @Value("${spring.kafka.producer.topic}")
+    @Value("${spring.kafka.consumer.topic}")
     private String topicName;
     @Autowired
     private ProducerService service;
