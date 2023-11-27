@@ -12,7 +12,7 @@ public class ProducerController {
     private ProducerService service;
     @RequestMapping(value="/greet", method= RequestMethod.GET)
     public String greet() {
-        return "Welcome Java App v3!";
+        return "Welcome Java App v4!";
     }
     @GetMapping("/message/{message}")
     public String message(@PathVariable String message) {
