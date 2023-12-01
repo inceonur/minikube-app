@@ -46,7 +46,6 @@ public class ProducerController {
 
         ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(10));
 
-
         for (ConsumerRecord<String, String> record : records) {
 
             messages.add(record.value());
