@@ -22,6 +22,7 @@ public class KafkaEventListener {
         if(username == null)
         {
             username="AspNet";
+            chatMessage.setSender(username);
             chatMessage.setType(ChatMessage.MessageType.JOIN);
             messagingTemplate.convertAndSend("/topic/public", chatMessage);
         }
