@@ -27,6 +27,6 @@ public class KafkaEventListener {
         }
         chatMessage.setType(ChatMessage.MessageType.CHAT);
         chatMessage.setSender(username);
-        messagingTemplate.convertAndSend("/app/chat.sendMessage", chatMessage);
+        messagingTemplate.convertAndSend("/topic/public", chatMessage);
     }
 }
