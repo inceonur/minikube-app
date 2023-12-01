@@ -18,21 +18,21 @@ import java.util.*;
 @RequestMapping("api")
 public class ProducerController {
 
-    private static KafkaConsumer<String, String> consumer;
-    @Value("${spring.kafka.consumer.topic}")
-    private String topicName;
+  //  private static KafkaConsumer<String, String> consumer;
+   // @Value("${spring.kafka.consumer.topic}")
+   // private String topicName;
     @Autowired
     private ProducerService service;
     @RequestMapping(value="/greet", method= RequestMethod.GET)
     public String greet() {
-        return "Welcome Java App v6!";
+        return "Welcome Java App v7!";
     }
     @GetMapping("/message/{message}")
     public String message(@PathVariable String message) {
         service.sendMessage(message);
         return "Message sent!";
     }
-
+/*
     @RequestMapping(value="/consume", method= RequestMethod.GET)
     public List<String> consumeFromBeginning() {
 
@@ -70,7 +70,7 @@ public class ProducerController {
     }
 
 
-
+*/
 
 
 
