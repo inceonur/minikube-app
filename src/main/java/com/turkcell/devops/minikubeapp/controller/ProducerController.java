@@ -25,7 +25,7 @@ public class ProducerController {
     private ProducerService service;
     @RequestMapping(value="/greet", method= RequestMethod.GET)
     public String greet() {
-        return "Welcome Java App v11!";
+        return "Welcome Java App v12!";
     }
     @GetMapping("/message/{message}")
     public String message(@PathVariable String message) {
