@@ -12,6 +12,7 @@ public class KafkaEventListener {
 
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
+
     private String username;
     @KafkaListener(topics = "${spring.kafka.consumer.topic}", groupId = "${spring.kafka.consumer.group-id}")
     public void consume(@Payload String message) {
