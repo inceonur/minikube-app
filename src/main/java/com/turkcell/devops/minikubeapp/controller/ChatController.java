@@ -17,7 +17,7 @@ public class ChatController {
     private ProducerService service;
 
     @MessageMapping("/chat.sendMessage")
-    @SendTo("/topic/public")
+   // @SendTo("/topic/public")
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
         System.out.println("Sender:"+chatMessage.getSender());
         System.out.println("Type:"+chatMessage.getType());
