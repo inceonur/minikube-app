@@ -22,10 +22,10 @@ spec:
           resources:
             limits:
               memory: 1Gi
-              cpu: 500m
+            #  cpu: 500m
             requests:
               memory: 400Mi
-              cpu: 100m
+            #  cpu: 100m
 
 ---
 apiVersion: v1
