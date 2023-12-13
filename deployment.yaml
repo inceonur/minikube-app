@@ -14,6 +14,7 @@ spec:
       labels:
         app: minikube-app
     spec:
+      nodeName: minikube
       containers:
         - name: minikube-app-server
           image: inceonur/minikube-app:latest
