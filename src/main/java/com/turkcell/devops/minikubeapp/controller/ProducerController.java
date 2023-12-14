@@ -2,17 +2,8 @@ package com.turkcell.devops.minikubeapp.controller;
 
 
 import com.turkcell.devops.minikubeapp.service.ProducerService;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.Duration;
-import java.util.*;
 
 @RestController
 @RequestMapping("api")
@@ -32,6 +23,21 @@ public class ProducerController {
         service.sendMessage(message);
         return "Message sent!";
     }
+    @GetMapping("/load")
+    public String loader() {
+        final int NUM_TESTS = 1000;
+        long start = System.nanoTime();
+        for (int i = 0; i < NUM_TESTS; i++) {
+            spin(500);
+        }
+        return("Took " + (System.nanoTime()-start)/1000000 +"ms (expected " + (NUM_TESTS*500) + ")");
+    }
+    private static void spin(int milliseconds) {
+        long sleepTime = milliseconds*1000000L;
+        long startTime = System.nanoTime();
+        while ((System.nanoTime() - startTime) < sleepTime) {}
+    }
+
 /*
     @RequestMapping(value="/consume", method= RequestMethod.GET)
     public List<String> consumeFromBeginning() {
