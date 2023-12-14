@@ -25,7 +25,7 @@ public class ProducerController {
     }
     @GetMapping("/load")
     public String loader() {
-        final int NUM_TESTS = 1000;
+        final int NUM_TESTS = 400;
         long start = System.nanoTime();
         for (int i = 0; i < NUM_TESTS; i++) {
             spin(500);
