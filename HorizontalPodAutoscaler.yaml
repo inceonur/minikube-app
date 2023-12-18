@@ -23,7 +23,7 @@ spec:
       target:
         type: Utilization
         averageUtilization: 80
-      #  behavior:
+       #  behavior:
         #scaleDown:
         #stabilizationWindowSeconds: 30
           #policies:
