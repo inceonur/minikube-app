@@ -11,12 +11,6 @@ spec:
   minReplicas: 1
   maxReplicas: 5
   metrics:
-    #  - type: Resource
-    #   resource:
-    #    name: memory
-    #    target:
-    #      type: AverageValue
-  #    averageValue: 300Mi
   - type: Resource
     resource:
       name: cpu
